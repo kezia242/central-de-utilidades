@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central de Utilidades</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-conteudo">
+      <div class="marca">
+        <span class="icone-marca" aria-hidden="true">🧮</span>
+        <strong>Central de Utilidades</strong>
+      </div>
+      <nav class="menu-nav" aria-label="Navegação principal">
+        <a href="#inicio" id="nav-inicio" class="ativo">Início</a>
+        <a href="#ferramentas" id="nav-ferramentas">Ferramentas</a>
+        <a href="#sobre" id="nav-sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="inicio" class="secao ativa">
+      <div class="hero">
+        <div class="hero-texto">
+          <h1>Central de Utilidades</h1>
+          <p>Ferramentas simples e práticas para resolver situações do dia a dia.</p>
+          <div class="hero-acoes">
+            <button type="button" class="btn-primario" id="btn-ir-ferramentas">
+              Explorar Ferramentas
+            </button>
+            <button type="button" class="btn-secundario" id="btn-modo-prompt">
+              Testar via Prompt/Alert
+            </button>
+          </div>
+        </div>
+        <div class="hero-ilustracao" aria-hidden="true">
+          <div class="card-ilustracao">
+            <span>📊</span>
+            <small>Cálculos rápidos</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-cards">
+        <article class="card">
+          <div class="card-icone azul">%</div>
+          <h2>Calculadora de Descontos</h2>
+          <p>Descubra quanto você economiza em uma compra.</p>
+          <button type="button" class="btn-card" data-abrir="desconto">
+            Calcular Desconto &gt;
+          </button>
+        </article>
+
+        <article class="card">
+          <div class="card-icone verde">💳</div>
+          <h2>Calculadora de Parcelas</h2>
+          <p>Calcule o valor das parcelas de uma compra.</p>
+          <button type="button" class="btn-card" data-abrir="parcelas">
+            Calcular Parcelas &gt;
+          </button>
+        </article>
+
+        <article class="card">
+          <div class="card-icone roxo">📈</div>
+          <h2>Simulador de Investimentos</h2>
+          <p>Simule o crescimento de um investimento ao longo do tempo.</p>
+          <button type="button" class="btn-card" data-abrir="investimentos">
+            Simular Investimento &gt;
+          </button>
+        </article>
+
+        <article class="card">
+          <div class="card-icone laranja">👥</div>
+          <h2>Divisor de Despesas</h2>
+          <p>Descubra quanto cada pessoa deve pagar em uma conta compartilhada.</p>
+          <button type="button" class="btn-card" data-abrir="despesas">
+            Dividir Despesas &gt;
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section id="ferramentas" class="secao">
+      <button type="button" class="btn-voltar" id="btn-voltar-inicio">
+        &larr; Voltar para as ferramentas
+      </button>
+
+      <div class="abas-ferramentas" role="tablist">
+        <button type="button" class="aba ativa" data-ferramenta="desconto">Descontos</button>
+        <button type="button" class="aba" data-ferramenta="parcelas">Parcelas</button>
+        <button type="button" class="aba" data-ferramenta="investimentos">Investimentos</button>
+        <button type="button" class="aba" data-ferramenta="despesas">Divisor de Despesas</button>
+      </div>
+
+      <div id="ferramenta-desconto" class="painel-ferramenta ativa">
+        <div class="grade-ferramenta">
+          <form id="form-desconto" class="box-form" novalidate>
+            <div class="cabecalho-ferramenta">
+              <span class="badge azul">%</span>
+              <div>
+                <h2>Calculadora de Descontos</h2>
+                <p>Descubra quanto você economiza em uma compra.</p>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="preco-original">Preço original (R$)</label>
+              <input type="number" id="preco-original" step="0.01" min="0.01" placeholder="200.00" required />
+            </div>
+
+            <div class="campo">
+              <label for="percentual-desconto">Desconto (%)</label>
+              <input type="number" id="percentual-desconto" step="0.01" min="0" max="100" placeholder="15" required />
+            </div>
+
+            <p id="erro-desconto" class="mensagem-erro" role="alert"></p>
+
+            <button type="submit" class="btn-primario largura-total">Calcular Desconto</button>
+          </form>
+
+          <div id="resultado-desconto" class="box-resultado">
+            <div class="resultado-topo">
+              <span class="check">&#10003;</span>
+              <h3>Resultado</h3>
+            </div>
+            <p class="placeholder-resultado">Preencha os campos ao lado e clique em <strong>Calcular Desconto</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="ferramenta-parcelas" class="painel-ferramenta">
+        <div class="grade-ferramenta">
+          <form id="form-parcelas" class="box-form" novalidate>
+            <div class="cabecalho-ferramenta">
+              <span class="badge verde">💳</span>
+              <div>
+                <h2>Calculadora de Parcelas</h2>
+                <p>Calcule o valor das parcelas de uma compra (sem juros).</p>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="valor-total-compra">Valor total da compra (R$)</label>
+              <input type="number" id="valor-total-compra" step="0.01" min="0.01" placeholder="1200.00" required />
+            </div>
+
+            <div class="campo">
+              <label for="quantidade-parcelas">Quantidade de parcelas</label>
+              <input type="number" id="quantidade-parcelas" step="1" min="1" placeholder="6" required />
+            </div>
+
+            <p id="erro-parcelas" class="mensagem-erro" role="alert"></p>
+
+            <button type="submit" class="btn-primario largura-total">Calcular Parcelas</button>
+          </form>
+
+          <div id="resultado-parcelas" class="box-resultado">
+            <div class="resultado-topo">
+              <span class="check">&#10003;</span>
+              <h3>Resultado</h3>
+            </div>
+            <p class="placeholder-resultado">Preencha os campos ao lado e clique em <strong>Calcular Parcelas</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="ferramenta-investimentos" class="painel-ferramenta">
+        <div class="grade-ferramenta">
+          <form id="form-investimentos" class="box-form" novalidate>
+            <div class="cabecalho-ferramenta">
+              <span class="badge roxo">📈</span>
+              <div>
+                <h2>Simulador de Investimentos</h2>
+                <p>Simule o crescimento de um investimento ao longo do tempo.</p>
+              </div>
+            </div>
+
+            <div class="grid-2-campos">
+              <div class="campo">
+                <label for="investimento-inicial">Investimento inicial (R$)</label>
+                <input type="number" id="investimento-inicial" step="0.01" min="0" placeholder="1000.00" required />
+              </div>
+
+              <div class="campo">
+                <label for="aporte-mensal">Aporte mensal (R$)</label>
+                <input type="number" id="aporte-mensal" step="0.01" min="0" placeholder="200.00" required />
+              </div>
+
+              <div class="campo">
+                <label for="taxa-mensal">Taxa de rendimento mensal (%)</label>
+                <input type="number" id="taxa-mensal" step="0.01" min="0" placeholder="1.00" required />
+              </div>
+
+              <div class="campo">
+                <label for="periodo-meses">Período (meses)</label>
+                <input type="number" id="periodo-meses" step="1" min="1" placeholder="12" required />
+              </div>
+            </div>
+
+            <p id="erro-investimentos" class="mensagem-erro" role="alert"></p>
+
+            <button type="submit" class="btn-primario largura-total">Simular Investimento</button>
+          </form>
+
+          <div id="resultado-investimentos" class="box-resultado">
+            <div class="resultado-topo">
+              <span class="check">&#10003;</span>
+              <h3>Resultado da Simulação</h3>
+            </div>
+            <p class="placeholder-resultado">Preencha os campos ao lado e clique em <strong>Simular Investimento</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="ferramenta-despesas" class="painel-ferramenta">
+        <div class="grade-ferramenta">
+          <div class="box-form">
+            <div class="cabecalho-ferramenta">
+              <span class="badge laranja">👥</span>
+              <div>
+                <h2>Divisor de Despesas</h2>
+                <p>Descubra quanto cada pessoa deve pagar em uma conta compartilhada.</p>
+              </div>
+            </div>
+
+            <form id="form-adicionar-despesa" class="form-despesa" novalidate>
+              <div class="campo">
+                <label for="descricao-despesa">Descrição da despesa</label>
+                <input type="text" id="descricao-despesa" placeholder="Ex.: Almoço, Combustível, Mercado" required />
+              </div>
+
+              <div class="linha-adicionar">
+                <div class="campo flex-1">
+                  <label for="valor-despesa">Valor (R$)</label>
+                  <input type="number" id="valor-despesa" step="0.01" min="0.01" placeholder="50.00" required />
+                </div>
+                <button type="submit" class="btn-secundario btn-adicionar">+ Adicionar</button>
+              </div>
+            </form>
+
+            <div class="lista-despesas-box">
+              <h3>Despesas incluídas</h3>
+              <ul id="lista-despesas" class="lista-despesas">
+                <li class="lista-vazia">Nenhuma despesa adicionada ainda.</li>
+              </ul>
+            </div>
+
+            <div class="campo">
+              <label for="quantidade-pessoas">Quantidade de pessoas</label>
+              <input type="number" id="quantidade-pessoas" step="1" min="1" value="4" />
+            </div>
+
+            <p id="erro-despesas" class="mensagem-erro" role="alert"></p>
+
+            <button type="button" id="btn-dividir-despesas" class="btn-primario largura-total">
+              Dividir Despesas
+            </button>
+          </div>
+
+          <div id="resultado-despesas" class="box-resultado">
+            <div class="resultado-topo">
+              <span class="check">&#10003;</span>
+              <h3>Resultado</h3>
+            </div>
+            <p class="placeholder-resultado">Adicione despesas, informe a quantidade de pessoas e clique em <strong>Dividir Despesas</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="secao">
+      <div class="box-sobre">
+        <h2>Sobre o Projeto</h2>
+        <p>
+          A Central de Utilidades reúne quatro ferramentas para apoiar cálculos do cotidiano:
+          descontos em compras, parcelamento sem juros, simulação de investimentos com aportes mensais e
+          divisão de despesas compartilhadas.
+        </p>
+        <p>
+          Desenvolvido no curso Técnico em Informática para Internet — Programação Web I.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>&copy; 2026 - Central de Utilidades | Desenvolvido por Kézia Manuella</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
