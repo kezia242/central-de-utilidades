@@ -26,4 +26,4 @@ Você pode abrir o arquivo `index.html` diretamente no navegador ou acessar pelo
 
 ## Esboço das Interfaces
 
-![Esboço das interfaces da Central de Utilidades](esboco-interfaces.png)
+![Esboço das interfaces da Central de Utilidades](esboco-interfaces.jpeg)
